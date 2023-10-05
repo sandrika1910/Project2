@@ -18,13 +18,9 @@ import static com.codeborne.selenide.Configuration.assertionMode;
 
 @Listeners({CustomListener.class})
 public class RegisterPageSteps {
-    private SoftAssert softAssert;
     RegisterPage registerPage = new RegisterPage();
     User user = new User();
-    public RegisterPageSteps(SoftAssert softAssert) {
-        assertionMode= AssertionMode.SOFT;
-        this.softAssert = softAssert;
-    }
+
     @Step("click on 'რეგისტრაცია'")
     public RegisterPageSteps clickOnRegisterButton() {
         registerPage.registerButton.hover().click();
@@ -118,7 +114,8 @@ public class RegisterPageSteps {
         String text = "გთხოვთ აირჩიოთ სქესი!";
         SelenideElement message = registerPage.loginRegisterForm.$("#physicalInfoMassage");
         message.shouldHave(Condition.text(text));
-        softAssert.assertEquals(text,message.getText());
+//        softAssert.assertEquals(text,message.getText());
+        assert text.equals(message.getText());
 //        softAssert.assertAll();
         return this;
     }

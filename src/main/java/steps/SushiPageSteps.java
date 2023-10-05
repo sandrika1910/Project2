@@ -16,16 +16,7 @@ import static com.codeborne.selenide.Selenide.$$;
 @Listeners({CustomListener.class})
 public class SushiPageSteps {
     SushiPage sushiPage = new SushiPage();
-    private SoftAssert softAssert;
 
-    public SushiPageSteps(SoftAssert softAssert) {
-        this.softAssert = softAssert;
-        assertionMode=AssertionMode.SOFT;
-    }
-
-    public SushiPageSteps() {
-
-    }
 
     @Step("Step -> Add first product to favorites")
     public SushiPageSteps addToFavorites() {
@@ -37,14 +28,15 @@ public class SushiPageSteps {
     public SushiPageSteps checkIfLoginFormAppear() {
         SelenideElement loginRegisterForm = $("section[class='login-register-outer']");
         loginRegisterForm.shouldHave(Condition.attribute("style", "right: 0px;"));
-        softAssert.assertEquals(loginRegisterForm.getAttribute("style"), "right: 0px;", "Login and Register form did not appear.");
+//        softAssert.assertEquals(loginRegisterForm.getAttribute("style"), "right: 0px;", "Login and Register form did not appear.");
         return this;
     }
 
     @Step("Step -> check that all vouchers have not sold yet")
     public SushiPageSteps checkVoucher() {
         SelenideElement voucherLimit = sushiPage.container.$("div[class='voucher-limit']");
-        softAssert.assertNotEquals(voucherLimit.getAttribute("style"),"width: 100%;", "All vouchers sold!");
+//        softAssert.assertNotEquals(voucherLimit.getAttribute("style"),"width: 100%;", "All vouchers sold!");
+        voucherLimit.shouldNotHave(Condition.attribute("style", "width: 100%;"));
 //        softAssert.assertAll();
         return this;
     }
@@ -63,9 +55,9 @@ public class SushiPageSteps {
         long startTime = System.currentTimeMillis();
         long maxDuration = 7000; // 7 seconds in milliseconds
 
-        while( (System.currentTimeMillis() - startTime) >= maxDuration){
-                if(WebDriverRunner.url().equals(targetUrl)) {
-                    break;
+        while ((System.currentTimeMillis() - startTime) >= maxDuration) {
+            if (WebDriverRunner.url().equals(targetUrl)) {
+                break;
             }
         }
         return this;
@@ -76,7 +68,8 @@ public class SushiPageSteps {
         ElementsCollection collection = $$("div[class='discounted-prices']");
         int firstItemPrice = HelperClassForSteps.getNumbersFromString(collection.get(0).$("p").getText());
         int secondItemPrice = HelperClassForSteps.getNumbersFromString(collection.get(1).$("p").getText());
-        softAssert.assertTrue(firstItemPrice > secondItemPrice,"First product's price is not greater than second product's price");
+//        softAssert.assertTrue(firstItemPrice > secondItemPrice,"First product's price is not greater than second product's price");
+        assert firstItemPrice > secondItemPrice;
         return this;
     }
 

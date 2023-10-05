@@ -13,10 +13,9 @@ import static com.codeborne.selenide.Selenide.$;
 @Listeners({CustomListener.class})
 public class RecreationPageSteps {
     RecreationPage rp = new RecreationPage();
-    private SoftAssert softAssert;
-    public RecreationPageSteps(SoftAssert softAssert) {
+    private SoftAssert softAssert = new SoftAssert();
+    public RecreationPageSteps() {
         assertionMode=AssertionMode.SOFT;
-        this.softAssert = softAssert;
     }
 
     @Step("Step -> scroll down")
