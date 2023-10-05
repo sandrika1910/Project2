@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Passed",
+    "matchedStatuses": ["passed"]
+  },
+  {
+    "name": "Failed",
+    "matchedStatuses": ["failed"]
+  },
+  {
+    "name": "Broken",
+    "matchedStatuses": ["broken"]
+  },
+  {
+    "name": "Failed by Assertion",
+    "traceRegex": ".*Failed by assertion.*"
+  }
+]
