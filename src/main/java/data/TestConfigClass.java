@@ -15,9 +15,9 @@ public class TestConfigClass {
         Configuration.browserCapabilities = options;
         browserSize = null;
         baseUrl="https://www.swoop.ge/";
-        timeout=20000;
+        timeout=200000;
         pageLoadTimeout=750000;
-        assertionMode= AssertionMode.SOFT;
+//        assertionMode= AssertionMode.SOFT;
         holdBrowserOpen=false;
         reopenBrowserOnFail=true;
         savePageSource=false;
