@@ -79,7 +79,7 @@ public class RecreationPageSteps {
             softAssert.assertTrue(priceInt >= 200 && priceInt <= 230, "Price is not in range from 200 to 230!");
         }
 
-//        softAssert.assertAll();
+        softAssert.assertAll();
         return this;
     }
 }
