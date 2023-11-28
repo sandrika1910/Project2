@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import steps.*;
 
-@SuppressWarnings("fallthrough")
+@SuppressWarnings("all")
 @Epic("Test 'www.swoop.ge' using selenide and allure framework")
 @Feature("JDK20 available")
 @Listeners({CustomListener.class, SoftAsserts.class})
